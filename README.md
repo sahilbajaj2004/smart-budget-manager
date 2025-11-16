@@ -1,9 +1,10 @@
 # 💰 Smart Budget Manager
 
-> A modern, feature-rich personal finance tracker built with vanilla HTML, CSS, and JavaScript
+> A modern, feature-rich personal finance tracker with multi-page architecture built with vanilla HTML, CSS, and JavaScript
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Pages](https://img.shields.io/badge/pages-5-orange.svg)
 
 ## 📋 Table of Contents
 
@@ -22,14 +23,15 @@
 
 ## 🎯 Overview
 
-**Smart Budget Manager** is a web-based personal finance tool that helps users keep track of their income, expenses, and savings with clarity and simplicity. Unlike complex financial software, this app focuses on making spending patterns obvious through visual analytics and smart insights.
+**Smart Budget Manager** is a comprehensive web-based personal finance tool that helps users track income, expenses, and savings goals across multiple dedicated pages. Unlike complex financial software, this app focuses on making financial management intuitive through visual analytics, smart insights, and a well-organized multi-page structure.
 
 ### Key Highlights
 
-- 📊 **Real-time Dashboard** - Instant financial overview
-- 💡 **Smart Insights** - AI-like spending pattern analysis
-- 📈 **Visual Analytics** - Beautiful charts powered by Chart.js
-- 🎯 **Goal Tracking** - Set and monitor savings goals
+- 📊 **Multi-Page Architecture** - Dedicated pages for each feature
+- 💳 **Transaction Management** - Complete transaction history with filters
+- 📈 **Visual Analytics** - 4 interactive charts with time-period filters
+- 🎯 **Goal Tracking** - Create and monitor multiple savings goals
+- ⚙️ **Settings & Preferences** - Customize currency, theme, and more
 - 🌙 **Dark Mode** - Eye-friendly theme switching
 - 📱 **Responsive Design** - Works on all devices
 - 💾 **Offline First** - No backend required, data stored locally
@@ -38,15 +40,67 @@
 
 ## ✨ Features
 
+### 📄 Pages Overview
+
+#### 🏠 Dashboard (index.html)
+
+- Real-time financial summary cards
+- Quick transaction entry form
+- Recent transactions list (last 5)
+- Smart insights panel
+- Goal progress indicator
+
+#### 💳 Transactions Page (Transactions.html)
+
+- Complete transaction history
+- Advanced filtering (search, type, category, sorting)
+- Add new transactions
+- Delete transactions
+- Export to CSV/JSON
+- Summary cards with total count
+
+#### 📈 Analytics Page (Analytics.html)
+
+- **4 Interactive Charts:**
+  - Income vs Expense (Bar Chart)
+  - Category-wise Spending (Doughnut Chart)
+  - Monthly Trend (Line Chart)
+  - Top Categories (Horizontal Bar Chart)
+- Time period filters (All Time, This Month, This Week, This Year)
+- Average daily spending calculation
+- Savings rate percentage
+- Detailed category analysis
+- Smart spending insights
+
+#### 🎯 Goals Page (Goals.html)
+
+- Create multiple savings goals
+- Set target amount and deadline
+- Track progress with visual indicators
+- Mark goals as complete/incomplete
+- View active and completed goals separately
+- Goal categories (Savings, Travel, Gadgets, Education, etc.)
+- Calculate remaining amount and days
+
+#### ⚙️ Settings Page (Settings.html)
+
+- **Appearance:** Theme selection (Light/Dark)
+- **Currency & Format:** Choose currency symbol and date format
+- **Budget Limits:** Set monthly budget with alert thresholds
+- **Notifications:** Toggle budget alerts and goal reminders
+- **Data Management:** Export all data, import CSV/JSON, clear all data
+- **App Information:** Version and details
+
 ### Core Features
 
 #### 1️⃣ Transaction Management
 
 - ✅ Add income and expenses with description, amount, category, and date
-- ✅ Categorize transactions (Food, Transport, Shopping, Bills, etc.)
+- ✅ Categorize transactions (Food, Transport, Shopping, Bills, Health, Education, Salary, Entertainment, Other)
 - ✅ Color-coded entries (Green for income, Red for expenses)
 - ✅ Delete individual transactions
-- ✅ View transaction history with timestamps
+- ✅ View complete transaction history
+- ✅ Sort by newest, oldest, highest, lowest amount
 
 #### 2️⃣ Dynamic Financial Summary
 
@@ -55,22 +109,27 @@ Dashboard cards that auto-update:
 - 💵 **Total Income** - Sum of all income transactions
 - 💸 **Total Expense** - Sum of all expense transactions
 - 💰 **Current Balance** - Real-time calculation (Income - Expense)
-- 🎯 **Goal Progress** - Visual progress bar
+- 📊 **Average Daily Spending** - Calculated based on time period
+- 🎯 **Savings Rate** - Percentage of income saved
 
 #### 3️⃣ Data Persistence
 
 - 💾 LocalStorage-based storage (no backend needed)
 - 💾 Data persists across browser sessions
 - 💾 Automatic save on every action
-- 💾 Only resets when browser storage is cleared
+- 💾 Shared data across all pages
+- 💾 Import/Export functionality for backup
 
 #### 4️⃣ Visual Analytics
 
-Powered by **Chart.js**:
+Powered by **Chart.js 4.4.0**:
 
 - 🥧 **Category-wise Spending** - Doughnut chart showing expense distribution
 - 📊 **Income vs Expense** - Bar chart comparing totals
-- 📈 Real-time chart updates
+- 📈 **Monthly Trend** - Line chart showing income/expense over time
+- 🎯 **Top Categories** - Horizontal bar chart of highest spending categories
+- 🔄 Real-time chart updates
+- 📅 Time-period filtering
 
 ### Advanced Features
 
@@ -82,44 +141,58 @@ Intelligent spending analysis:
 - ✅ Positive feedback for good savings rate (>20%)
 - 🚨 Alert when expenses exceed income
 - 💡 Personalized financial tips
+- 📊 Context-aware insights on Analytics page
 
 #### 6️⃣ Filters & Search 🔍
 
-Powerful filtering options:
+Powerful filtering options on Transactions page:
 
 - Search by description or category
 - Filter by type (Income/Expense/All)
-- Filter by category
-- One-click clear filters
+- Filter by category (9 categories)
+- Sort by newest, oldest, highest, lowest amount
+- One-click clear all filters
 
 #### 7️⃣ Export Options 📥
 
-Download your data:
+Multiple export formats:
 
-- **CSV Export** - Spreadsheet format for Excel/Sheets
-- **PDF Export** - Formatted report with summary and transactions
+- **CSV Export** - Spreadsheet format for Excel/Google Sheets
+- **JSON Export** - Complete data backup
+- **PDF Export** - Formatted report (Dashboard)
+- **Full Data Export** - All transactions, goals, and settings (Settings page)
 
-#### 8️⃣ Dark Mode 🌙
+#### 8️⃣ Settings & Customization ⚙️
 
-- One-click theme toggle
-- Persists preference in LocalStorage
-- Eye-friendly dark colors
-- Smooth transitions
+- **Theme:** Light/Dark mode with persistence
+- **Currency:** ₹ (INR), $ (USD), € (EUR), £ (GBP), ¥ (JPY)
+- **Date Format:** DD/MM/YYYY, MM/DD/YYYY, YYYY-MM-DD
+- **Budget Alerts:** Set monthly limits and alert thresholds (50%, 75%, 80%, 90%)
+- **Notifications:** Toggle budget alerts and goal reminders
+- **Data Import:** Upload CSV or JSON files
+- **Data Clear:** Reset all data with confirmation
 
-#### 9️⃣ Goal Tracker 🎯
+#### 9️⃣ Multiple Goals Tracker 🎯
 
-- Set custom savings goals with target amount
-- Set target deadline
-- Visual progress indicator
-- Percentage completion display
-- Remaining amount calculation
+Enhanced goal management system:
+
+- Create unlimited savings goals
+- Name goals with descriptions
+- Categorize goals (Savings, Travel, Gadgets, Education, Investment, Emergency Fund)
+- Set target amount and deadline
+- Visual progress bars
+- Calculate days remaining
+- Mark goals as complete
+- Separate views for active and completed goals
+- Track total savings across all completed goals
 
 #### 🔟 Responsive Design 📱
 
 - Mobile-first approach
-- Hamburger menu for mobile
+- Hamburger menu for mobile devices
 - Touch-friendly interface
-- Works on phones, tablets, and desktops
+- Adaptive layouts for phones, tablets, and desktops
+- Consistent navigation across all pages
 
 ---
 
@@ -164,39 +237,52 @@ Smart Budget Manager solves this by providing:
 
 ```
 smart-budget-manager/
-├── index.html              # Main HTML file
+├── index.html              # Dashboard - Main landing page
+├── Transactions.html       # Transaction management page
+├── Analytics.html          # Charts and analytics page
+├── Goals.html              # Savings goals page
+├── Settings.html           # Settings and preferences page
 ├── css/
-│   └── styles.css         # Complete stylesheet
+│   └── styles.css         # Complete stylesheet with all page styles
 ├── js/
-│   └── app.js             # Core application logic
+│   ├── app.js             # Shared utilities and dashboard logic
+│   ├── transactions.js    # Transaction page logic
+│   ├── analytics.js       # Analytics and charts logic
+│   ├── goals.js           # Goals management logic
+│   └── settings.js        # Settings page logic
 ├── assets/                # (Empty - for future images/icons)
-└── README.md              # This file
+├── README.md              # This file
+├── PRESENTATION.md        # Project presentation
+└── QUICKSTART.md          # Quick start guide
 ```
 
 ### File Descriptions
 
-**HTML (index.html)**
+**HTML Pages**
 
-- Single-page application structure
-- Semantic HTML5 elements
-- Four main sections: Dashboard, Transactions, Analytics, Goals
-- Modal for export options
+- **index.html** - Dashboard with summary cards, quick add form, recent transactions, and insights
+- **Transactions.html** - Full transaction management with filters, sorting, and export
+- **Analytics.html** - 4 interactive charts with time-period filters and detailed analysis
+- **Goals.html** - Multiple savings goals with progress tracking
+- **Settings.html** - Comprehensive settings for customization and data management
 
 **CSS (css/styles.css)**
 
 - CSS custom properties for theming
 - Flexbox and Grid layouts
-- Responsive breakpoints
-- Dark mode support
-- Smooth animations
+- Responsive breakpoints (@media queries)
+- Dark mode support with smooth transitions
+- Page-specific styles (goals, settings, transactions)
+- Toggle switches, modals, and form elements
+- Animation keyframes
 
-**JavaScript (js/app.js)**
+**JavaScript Modules**
 
-- Class-based architecture (`BudgetManager` class)
-- LocalStorage management
-- Dynamic DOM manipulation
-- Chart rendering
-- Export functionality
+- **app.js** - Shared utilities, theme management, mobile menu, dashboard functions
+- **transactions.js** - TransactionsPage class with add, delete, filter, sort, and export
+- **analytics.js** - AnalyticsPage class with 4 chart types and time-period filtering
+- **goals.js** - GoalsPage class with create, track, complete, and delete goals
+- **settings.js** - SettingsPage class with preferences, import/export, and data management
 
 ---
 
@@ -243,7 +329,9 @@ smart-budget-manager/
 
 ### 1. Adding Your First Transaction
 
-1. Navigate to **Dashboard**
+**From Dashboard:**
+
+1. Navigate to **Dashboard** (index.html)
 2. Fill the "Quick Add Transaction" form:
    - **Description**: e.g., "Grocery shopping"
    - **Amount**: e.g., 2500
@@ -253,45 +341,98 @@ smart-budget-manager/
 3. Click **Add Transaction**
 4. Watch the dashboard update instantly!
 
-### 2. Viewing All Transactions
+**From Transactions Page:**
+
+1. Click **Transactions** in the sidebar
+2. Click **Add Transaction** button
+3. Fill the form and submit
+4. Transaction appears in the list immediately
+
+### 2. Managing Transactions
 
 1. Click **Transactions** in the sidebar
 2. Use filters to narrow down:
-   - Search by keyword
-   - Filter by type (Income/Expense)
-   - Filter by category
-3. Click **Delete** to remove any transaction
+   - **Search** by keyword (description or category)
+   - **Filter by Type** (Income/Expense/All)
+   - **Filter by Category** (9 options)
+   - **Sort** by newest, oldest, highest, or lowest amount
+3. Click **Delete** button on any transaction to remove it
+4. Click **Export** to download CSV or JSON
 
 ### 3. Analyzing Your Spending
 
 1. Click **Analytics** in the sidebar
-2. View charts:
-   - **Category-wise Spending** - See where your money goes
-   - **Income vs Expense** - Compare totals
-3. Check **Detailed Analysis** for category breakdown
+2. Select time period (All Time, This Month, This Week, This Year)
+3. View 4 interactive charts:
+   - **Income vs Expense** - Bar chart comparing totals
+   - **Category-wise Spending** - Doughnut chart showing distribution
+   - **Monthly Trend** - Line chart tracking income/expense over time
+   - **Top Categories** - Horizontal bar chart of highest spending
+4. Check summary cards for quick stats
+5. Review **Detailed Category Analysis** section
+6. Read **Smart Insights** for personalized tips
 
 ### 4. Setting Savings Goals
 
 1. Click **Goals** in the sidebar
-2. Enter:
+2. Click **Add Goal** button
+3. Enter goal details:
+   - **Goal Name**: e.g., "New Laptop"
    - **Target Amount**: e.g., ₹50,000
    - **Target Date**: Set your deadline
-3. Click **Save Goal**
-4. Monitor progress on Dashboard
+   - **Category**: Select goal type
+   - **Description**: Optional notes
+4. Click **Create Goal**
+5. Monitor progress with visual progress bars
+6. Mark complete with ✓ button when achieved
+7. View separate lists for active and completed goals
 
-### 5. Exporting Data
+### 5. Customizing Settings
 
-1. Click **Export** button (top-right)
-2. Choose format:
-   - **CSV** - For spreadsheets
-   - **PDF** - For reports
-3. File downloads automatically
+1. Click **Settings** in the sidebar
+2. Customize appearance:
+   - Select **Theme** (Light/Dark)
+3. Set currency and format:
+   - Choose **Currency Symbol** (₹, $, €, £, ¥)
+   - Select **Date Format** preference
+4. Configure budget:
+   - Set **Monthly Budget Limit**
+   - Choose **Alert Threshold** percentage
+5. Toggle notifications:
+   - Enable/disable **Budget Alerts**
+   - Enable/disable **Goal Reminders**
+6. Click **Save Settings** to apply changes
 
-### 6. Switching Themes
+### 6. Exporting & Importing Data
 
-1. Click the **🌙/☀️** icon (top-right)
+**Export:**
+
+1. **From Transactions page**: Click Export → Choose CSV or JSON
+2. **From Settings page**: Click Export All Data → Downloads complete backup
+
+**Import:**
+
+1. Go to **Settings** page
+2. Click **Import** button
+3. Select CSV (transactions only) or JSON (full backup) file
+4. Click **Import File**
+5. Page reloads with imported data
+
+### 7. Managing Data
+
+**Clear All Data:**
+
+1. Go to **Settings** page
+2. Scroll to **Data Management** section
+3. Click **Clear Data** button
+4. Type "DELETE" to confirm
+5. All data is removed and page reloads
+
+### 8. Switching Themes
+
+1. Click the **🌙/☀️** icon in the header (any page)
 2. Theme switches instantly
-3. Preference is saved automatically
+3. Preference is saved automatically and applies to all pages
 
 ---
 
@@ -311,22 +452,43 @@ smart-budget-manager/
     timestamp: "2025-11-16T10:30:00.000Z"  // Full ISO timestamp
 }
 
-// Goal Object
+// Goal Object (Multiple Goals Support)
 {
+    id: 1700123456789,           // Unique timestamp
+    name: "New Laptop",          // Goal name
     amount: 50000,               // Target amount
-    deadline: "2025-12-31"       // Target date
+    deadline: "2025-12-31",      // Target date
+    category: "gadgets",         // Category slug
+    description: "MacBook Pro",  // Optional description
+    completed: false,            // Completion status
+    createdAt: "2025-11-16T10:30:00.000Z",  // Creation timestamp
+    completedAt: null            // Completion timestamp (if completed)
+}
+
+// Settings Object
+{
+    theme: "light",              // "light" | "dark"
+    currency: "₹",               // Currency symbol
+    dateFormat: "DD/MM/YYYY",    // Date format preference
+    monthlyBudget: 50000,        // Monthly budget limit
+    alertThreshold: 80,          // Alert at percentage (50, 75, 80, 90)
+    budgetAlerts: true,          // Enable budget alerts
+    goalReminders: true          // Enable goal reminders
 }
 ```
 
 ### LocalStorage Keys
 
-| Key            | Type   | Description             |
-| -------------- | ------ | ----------------------- |
-| `transactions` | Array  | All transaction records |
-| `goal`         | Object | Savings goal data       |
-| `theme`        | String | "light" or "dark"       |
+| Key            | Type   | Description                                     |
+| -------------- | ------ | ----------------------------------------------- |
+| `transactions` | Array  | All transaction records                         |
+| `goals`        | Array  | All savings goals (active + completed)          |
+| `settings`     | Object | User preferences and settings                   |
+| `theme`        | String | "light" or "dark" (for backwards compatibility) |
 
 ### Category Mapping
+
+**Transaction Categories:**
 
 ```javascript
 {
@@ -342,34 +504,70 @@ smart-budget-manager/
 }
 ```
 
+**Goal Categories:**
+
+```javascript
+{
+    savings: '💰',
+    travel: '✈️',
+    gadgets: '📱',
+    education: '📚',
+    investment: '📈',
+    emergency: '🚨',
+    other: '📦'
+}
+```
+
 ### Key Functions
 
-**Core Operations:**
+**Shared Utilities (app.js):**
+
+- `toggleTheme()` - Switch light/dark mode
+- `applyTheme()` - Apply theme to body
+- `setupMobileMenu()` - Initialize hamburger menu
+- `calculateTotals()` - Compute income/expense/balance
+- `updateDashboard()` - Refresh dashboard summary cards
+- `renderRecentTransactions(limit)` - Show recent entries
+- `generateInsights()` - Create smart tips
+
+**Transaction Operations (transactions.js):**
 
 - `addTransaction()` - Add new transaction
 - `deleteTransaction(id)` - Remove transaction
-- `calculateTotals()` - Compute income/expense/balance
-- `updateDashboard()` - Refresh summary cards
-
-**UI Rendering:**
-
-- `renderRecentTransactions(limit)` - Show recent entries
 - `renderAllTransactions()` - Display full list
-- `renderCharts()` - Update Chart.js visualizations
-- `generateInsights()` - Create smart tips
-
-**Data Management:**
-
-- `saveToStorage(key, data)` - Save to LocalStorage
-- `loadFromStorage(key)` - Load from LocalStorage
+- `filterTransactions()` - Apply search, type, category, and sort filters
+- `clearFilters()` - Reset all filters
 - `exportCSV()` - Generate CSV file
-- `exportPDF()` - Generate PDF report
+- `exportJSON()` - Generate JSON backup
 
-**Utilities:**
+**Analytics Operations (analytics.js):**
 
-- `toggleTheme()` - Switch light/dark mode
-- `filterTransactions()` - Apply search and filters
-- `switchSection(name)` - Navigate between pages
+- `getFilteredTransactions()` - Filter by time period
+- `renderIncomeExpenseChart()` - Bar chart
+- `renderCategoryChart()` - Doughnut chart
+- `renderMonthlyTrendChart()` - Line chart
+- `renderTopCategoriesChart()` - Horizontal bar chart
+- `renderAnalysis()` - Detailed category breakdown
+- `calculateDays()` - Calculate date range
+
+**Goals Operations (goals.js):**
+
+- `addGoal()` - Create new savings goal
+- `deleteGoal(id)` - Remove goal
+- `toggleGoalComplete(id)` - Mark goal as complete/incomplete
+- `renderActiveGoals()` - Display active goals
+- `renderCompletedGoals()` - Display completed goals
+- `calculateBalance()` - Get current balance from transactions
+
+**Settings Operations (settings.js):**
+
+- `loadSettings()` - Load saved preferences
+- `saveSettings()` - Save user preferences
+- `checkBudgetAlert()` - Validate monthly budget
+- `exportAllData()` - Export complete backup (transactions + goals + settings)
+- `importCSV()` - Import transactions from CSV
+- `importJSON()` - Import full backup or transactions
+- `clearAllData()` - Reset all localStorage data
 
 ### Responsive Breakpoints
 
@@ -444,18 +642,21 @@ Data is cleared only when:
 
 ### Planned Features
 
-- [ ] Cloud sync with Firebase
-- [ ] Multi-currency support
-- [ ] Recurring transactions
+- [ ] Cloud sync with Firebase/Supabase
+- [ ] Recurring transactions automation
 - [ ] Budget limits per category
-- [ ] Monthly/yearly reports
-- [ ] Bank CSV import
-- [ ] Data encryption
-- [ ] Multi-user support
-- [ ] Bill reminders
-- [ ] Receipt photo upload
-- [ ] Progressive Web App (PWA)
-- [ ] Mobile app (React Native)
+- [ ] Email/SMS notifications for alerts
+- [ ] Bank statement CSV import with mapping
+- [ ] Data encryption for sensitive information
+- [ ] Multi-user support with authentication
+- [ ] Bill reminders and due date tracking
+- [ ] Receipt photo upload and OCR
+- [ ] Progressive Web App (PWA) with offline support
+- [ ] Mobile app (React Native/Flutter)
+- [ ] AI-powered spending predictions
+- [ ] Investment tracking integration
+- [ ] Debt management module
+- [ ] Tax calculation and reporting
 
 ---
 
@@ -515,9 +716,11 @@ Built with ❤️ using vanilla JavaScript
 
 <div align="center">
 
-**Smart Budget Manager v1.0.0**
+**Smart Budget Manager v2.0.0**
 
-_Making personal finance simple and visual_
+_Making personal finance simple, visual, and organized_
+
+🏠 [Dashboard](index.html) | 💳 [Transactions](Transactions.html) | 📈 [Analytics](Analytics.html) | 🎯 [Goals](Goals.html) | ⚙️ [Settings](Settings.html)
 
 [⬆ Back to Top](#-smart-budget-manager)
 

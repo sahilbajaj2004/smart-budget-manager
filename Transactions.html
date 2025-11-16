@@ -4,17 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Smart Budget Manager</title>
+    <title>Transactions - Smart Budget Manager</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <!-- Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
-    <!-- jsPDF for export -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
@@ -22,7 +16,7 @@
 
 <body>
     <div class="app-container">
-        <!-- Sidebar -->
+        <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="logo">
                 <span class="logo-icon">💰</span>
@@ -30,10 +24,10 @@
             </div>
 
             <nav class="nav-menu">
-                <a href="index.html" class="nav-item active">
+                <a href="index.html" class="nav-item">
                     <span>📊</span> Dashboard
                 </a>
-                <a href="Transactions.html" class="nav-item">
+                <a href="Transactions.html" class="nav-item active">
                     <span>💳</span> Transactions
                 </a>
                 <a href="Analytics.html" class="nav-item">
@@ -65,62 +59,61 @@
             <!-- Header -->
             <header class="header">
                 <div class="header-left">
-                    <h1 id="sectionTitle">Dashboard</h1>
-                    <p id="sectionSubtitle">Overview of your finances</p>
+                    <h1>Transactions</h1>
+                    <p>Manage all your income and expenses</p>
                 </div>
                 <div class="header-right">
                     <button class="btn-icon" id="themeToggle" title="Toggle Theme">
                         <span class="theme-icon">🌙</span>
                     </button>
-                    <button class="btn-secondary" id="exportBtn">
-                        📥 Export
+                    <button class="btn-primary" id="addTransactionBtn">
+                        ➕ Add Transaction
                     </button>
                 </div>
             </header>
 
-            <!-- Dashboard Section -->
-            <section class="section active" id="dashboard-section">
-                <!-- Summary Cards -->
-                <div class="summary-grid">
-                    <div class="summary-card income-card">
-                        <div class="card-icon">💵</div>
-                        <div class="card-content">
-                            <p class="card-label">Total Income</p>
-                            <h3 class="card-value" id="totalIncome">₹0</h3>
-                        </div>
-                    </div>
-
-                    <div class="summary-card expense-card">
-                        <div class="card-icon">💸</div>
-                        <div class="card-content">
-                            <p class="card-label">Total Expense</p>
-                            <h3 class="card-value" id="totalExpense">₹0</h3>
-                        </div>
-                    </div>
-
-                    <div class="summary-card balance-card">
-                        <div class="card-icon">💰</div>
-                        <div class="card-content">
-                            <p class="card-label">Balance</p>
-                            <h3 class="card-value" id="balance">₹0</h3>
-                        </div>
-                    </div>
-
-                    <div class="summary-card goal-card">
-                        <div class="card-icon">🎯</div>
-                        <div class="card-content">
-                            <p class="card-label">Savings Goal</p>
-                            <h3 class="card-value" id="goalProgress">0%</h3>
-                            <div class="progress-bar">
-                                <div class="progress-fill" id="goalProgressBar"></div>
-                            </div>
-                        </div>
+            <!-- Summary Cards -->
+            <div class="summary-grid">
+                <div class="summary-card income-card">
+                    <div class="card-icon">💵</div>
+                    <div class="card-content">
+                        <p class="card-label">Total Income</p>
+                        <h3 class="card-value" id="totalIncome">₹0</h3>
                     </div>
                 </div>
 
-                <!-- Quick Add Form -->
+                <div class="summary-card expense-card">
+                    <div class="card-icon">💸</div>
+                    <div class="card-content">
+                        <p class="card-label">Total Expense</p>
+                        <h3 class="card-value" id="totalExpense">₹0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card balance-card">
+                    <div class="card-icon">💰</div>
+                    <div class="card-content">
+                        <p class="card-label">Balance</p>
+                        <h3 class="card-value" id="balance">₹0</h3>
+                    </div>
+                </div>
+
+                <div class="summary-card">
+                    <div class="card-icon">📝</div>
+                    <div class="card-content">
+                        <p class="card-label">Total Transactions</p>
+                        <h3 class="card-value" id="totalTransactions">0</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Transaction Form (Hidden by default) -->
+            <div class="transaction-form-container" id="transactionFormContainer" style="display: none;">
                 <div class="quick-add">
-                    <h3>Quick Add Transaction</h3>
+                    <div class="section-header">
+                        <h3>Add New Transaction</h3>
+                        <button class="btn-secondary" id="cancelTransactionBtn">Cancel</button>
+                    </div>
                     <form id="transactionForm" class="transaction-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -166,26 +159,51 @@
                         </button>
                     </form>
                 </div>
+            </div>
 
-                <!-- Recent Transactions -->
-                <div class="recent-transactions">
-                    <div class="section-header">
-                        <h3>Recent Transactions</h3>
-                        <a href="Transactions.html" class="view-all">View All →</a>
-                    </div>
-                    <div id="recentTransactionsList" class="transactions-list">
-                        <!-- Populated by JS -->
-                    </div>
+            <!-- Filters -->
+            <div class="filters-bar">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="🔍 Search transactions...">
                 </div>
+                <div class="filter-group">
+                    <select id="filterType">
+                        <option value="all">All Types</option>
+                        <option value="income">Income Only</option>
+                        <option value="expense">Expense Only</option>
+                    </select>
+                    <select id="filterCategory">
+                        <option value="all">All Categories</option>
+                        <option value="food">Food</option>
+                        <option value="transport">Transport</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="bills">Bills</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health</option>
+                        <option value="education">Education</option>
+                        <option value="salary">Salary</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <select id="filterSort">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="highest">Highest Amount</option>
+                        <option value="lowest">Lowest Amount</option>
+                    </select>
+                    <button class="btn-secondary" id="clearFilters">Clear</button>
+                </div>
+            </div>
 
-                <!-- Insights -->
-                <div class="insights-panel">
-                    <h3>💡 Smart Insights</h3>
-                    <div id="insightsContainer">
-                        <!-- Populated by JS -->
-                    </div>
+            <!-- All Transactions -->
+            <div class="all-transactions">
+                <div class="section-header">
+                    <h3>All Transactions</h3>
+                    <button class="btn-secondary" id="exportBtn">📥 Export</button>
                 </div>
-            </section>
+                <div id="allTransactionsList" class="transactions-list">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
         </main>
     </div>
 
@@ -193,18 +211,19 @@
     <div class="modal" id="exportModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h3>Export Data</h3>
+                <h3>Export Transactions</h3>
                 <button class="modal-close" id="closeModal">×</button>
             </div>
             <div class="modal-body">
                 <button class="btn-primary" id="exportCSV">📄 Export as CSV</button>
-                <button class="btn-primary" id="exportPDF">📕 Export as PDF</button>
+                <button class="btn-primary" id="exportJSON">📋 Export as JSON</button>
             </div>
         </div>
     </div>
 
     <!-- Custom JavaScript -->
     <script src="js/app.js"></script>
+    <script src="js/transactions.js"></script>
 </body>
 
 </html>
